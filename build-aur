@@ -14,3 +14,12 @@ chown -R makepkg:users /build
 sudo -u makepkg git clone --depth 1 https://aur.archlinux.org/$package.git /build
 
 /build-pkgbuild
+
+curl $MAIN_HOST/build/complete/mark/$package
+
+cd /pkg
+
+for i in *
+do
+	curl -X POST -H "Content-Type: application/octet-stream" --data-binary "@$i" $MAINHOST/upload\?name=$package
+done	
