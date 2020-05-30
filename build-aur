@@ -34,9 +34,8 @@ json_array() {
 
 for i in *
 do
-	echo "$S3_BUCKET" "$1" "$package"/"$1"
-	/easiest-minio-uploader "$S3_BUCKET" "$1" "$package"/"$1"
-	urls+=("$S3_HOST/$S3_BUCKET/$package/$1")
+	/easiest-minio-uploader "$S3_BUCKET" "$i" "$package"/"$i"
+	urls+=("$S3_HOST/$S3_BUCKET/$package/$i")
 done	
 
 echo urls
