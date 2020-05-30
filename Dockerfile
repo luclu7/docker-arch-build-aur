@@ -11,4 +11,4 @@ RUN pacman -Syu --noconfirm --needed base base-devel git && \
 VOLUME /pkg /build
 
 COPY sudoers /etc/sudoers
-COPY build-aur build-pkgbuild /
+COPY build-aur build-pkgbuild easiest-minio-uploader /
