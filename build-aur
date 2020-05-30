@@ -34,7 +34,6 @@ json_array() {
 
 for i in *
 do
-	curl -X POST -H "Content-Type: application/octet-stream" --data-binary "@$i" "$MAIN_HOST"/upload\?name="$i"
 	/easiest-minio-uploader "$S3_BUCKET" "$1" "$package"/"$1"
 	urls+=("$S3_HOST/$S3_BUCKET/$package/$1")
 done	
