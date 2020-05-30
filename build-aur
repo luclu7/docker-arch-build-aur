@@ -21,5 +21,5 @@ cd /pkg
 
 for i in *
 do
-	curl -X POST -H "Content-Type: application/octet-stream" --data-binary "@$i" $MAIN_HOST/upload\?name=$package
+	curl -X POST -H "Content-Type: application/octet-stream" --data-binary "@$i" $MAIN_HOST/upload\?name=$i
 done	
