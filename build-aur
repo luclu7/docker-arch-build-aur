@@ -24,7 +24,7 @@ json_array() {
   echo -n '['
   while [ $# -gt 0 ]; do
     x=${1//\\/\\\\}
-    print -n \""${x//\"/\\\"}"\"
+    echo -n \""${x//\"/\\\"}"\"
     [ $# -gt 1 ] && echo -n ', '
     shift
   done
