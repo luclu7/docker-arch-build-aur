@@ -42,4 +42,4 @@ echo urls
 
 json=$(json_array "${urls[@]}")
 
-curl -XPOST -F "uuid=$UUID" -F "urls=$json" "$MAIN_HOST"/build/complete/mark/
+curl -XPOST -F "uuid=$UUID" -F "urls=$json" "$MAIN_HOST"/build/complete/mark
