@@ -34,12 +34,12 @@ json_array() {
 
 for i in *
 do
-	/easiest-minio-uploader "$S3_BUCKET" "$i" "$package"/"$i"
-	urls+=("$S3_HOST/$S3_BUCKET/$package/$i")
+	/easiest-minio-uploader "$S3_BUCKET" "$i" "$package-$UUID"/"$i"
+	urls+=("$S3_HOST/$S3_BUCKET/$package-$UUID/$i")
 done	
 
 echo urls
 
 json=$(json_array "${urls[@]}")
 
-curl "$MAIN_HOST"/build/complete/mark/"$package"?urls="$json"
+curl -XPOST -F "uuid=$UUID" -F "urls=$json" "$MAIN_HOST"/build/complete/mark/
