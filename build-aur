@@ -21,7 +21,7 @@ cd /pkg
 for i in *
 do
 	/easiest-minio-uploader "$S3_BUCKET" "$i" "$package-$UUID"/"$i"
-	curl -F "secret=$SECRET" -F "uuid=$UUID" -F "url=$PROTOCOL://$S3_HOST/$S3_BUCKET/$package-$UUID/$i" "$MAIN_HOST"/build/addURL
+	curl -X POST """$MAIN_HOST""/build/addURL" -H "Content-Type: application/json" -d "{ \"UUID\": \"$UUID\", \"URL\": \"$PROTOCOL://$S3_HOST/$S3_BUCKET/$package-$UUID/$i\", \"Secret\": \"$SECRET\"}"
 done	
 
 curl -XPOST -F "uuid=$UUID" -F "secret=$SECRET" "$MAIN_HOST"/build/complete
